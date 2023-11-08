@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::get('/api/get/([a-z0-9]*)', function ($id) {
 
     if (!isset($_GET['secret'])) die('{"message":"Secret key is missing"}');
-    if ($_GET['secret'] !== SECRET_KEY) die('{"message":"Secret key is wrong"}');
+    if ($_GET['secret'] !== GUEST_FORM_SECRET_KEY) die('{"message":"Secret key is wrong"}');
 
     if (empty($id)  || !file_exists(BASEPATH.'/forms/' . $id . '.json')) die('{"message":"Form not found"}');
 
@@ -42,7 +42,7 @@ Route::post('/api/post', function () {
     // dump($values);
 
     if (!isset($values['secret'])) die('{"message":"Secret key is missing"}');
-    if ($values['secret'] !== SECRET_KEY) die('{"message":"Secret key is wrong"}');
+    if ($values['secret'] !== GUEST_FORM_SECRET_KEY) die('{"message":"Secret key is wrong"}');
 
     // except for secret key
     unset($values['secret']);
