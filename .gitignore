@@ -1,4 +1,4 @@
-
+/.htaccess
 /CONFIG.php
 /forms/*.json
 .DS_Store

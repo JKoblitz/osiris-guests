@@ -10,23 +10,12 @@ Die Datei `CONFIG.default.php` muss kopiert und in `CONFIG.php` umbenannt werden
 
 Wichtig ist der `SECRET_KEY`, er muss exakt mit dem in den OSIRIS-Einstellungen verwendeten Key (Admin > Funktionen > Gäste) übereinstimmen und sollte nicht leicht zu erraten sein. Wenn die Keys nicht übereinstimmen, wird die Übertragung zwischen den Servern nicht funktionieren, also achtet bitte darauf.
 
-## .htaccess
-Damit der Server funktioniert muss eine `.htaccess`-Datei im Root angelegt werden.
+## In einem Unterordner installieren
 
-```apache
-DirectoryIndex index.php
+OSIRIS Guests lässt sich auch in einem Unterordner installieren. Dafür müssen der `ROOTPATH` in der `CONFIG.php` und die `RewriteBase` in der `.htaccess`-Datei angepasst werden. Wenn ihr die `.htaccess`-Datei anpasst, solltet ihr dafür sorgen, dass git sie nicht wieder überschreibt:
 
-# enable apache rewrite engine
-RewriteEngine on
-
-# set your rewrite base
-RewriteBase /
-
-# Deliver the folder or file directly if it exists on the server
-RewriteRule ^(css|img|js|uploads|settings.json|data)($|/) - [L]
-
-# Push every request to index.php
-RewriteRule ^(.*)$ index.php [QSA]
+```bash
+git update-index --assume-unchanged .htaccess
 ```
 
 
