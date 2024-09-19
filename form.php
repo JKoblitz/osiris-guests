@@ -18,7 +18,7 @@ $lang = lang('en', 'de');
 
 <div class="content">
 
-    <a class="btn btn-primary float-right" target="_blank" href="?lang=<?= lang('de', 'en') ?>">
+    <a class="btn btn-primary float-right" href="?lang=<?= lang('de', 'en') ?>">
         <?= lang('Deutsch', 'English') ?>
     </a>
 
